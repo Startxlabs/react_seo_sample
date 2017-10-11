@@ -1,6 +1,6 @@
 'use strict';
 import React, { Component } from 'react';
-import { Link , browserHistory } from 'react-router';
+import { Link } from 'react-router';
 import $ from 'jquery';
 import {Helmet} from "react-helmet";
 
@@ -26,10 +26,6 @@ export default class NewsDetail extends Component {
                   console.log("error",e.statusText);
               }
           })
-    }
-
-    callBack(){
-      browserHistory.push('/')
     }
 
     render(){
@@ -81,7 +77,7 @@ export default class NewsDetail extends Component {
 
         		<h1>This is Detail Page</h1>
         		{lstData}
-        		<h3><Link onClick={this.callBack}>Back Page</Link></h3>
+        		<h3><Link to="/home">Back Page</Link></h3>
             </div>
         	);
     }

@@ -8,7 +8,7 @@ import NewsDetail from './components/Detail';
 
 
 const routes = (
-  <Route path="/" component={Layout}>
+  <Route path="/home" component={Layout}>
     <IndexRoute component={Home}/>
     <Route path="/detail/:id" component={NewsDetail}/>
   </Route>
