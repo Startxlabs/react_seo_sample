@@ -28,14 +28,14 @@ app.use(function (req, res, next) {
 //serving static folder
 app.use('/', express.static(path.join(__dirname, 'public')));
 
-app.listen(8000, function () {
+app.listen(3000, function () {
     console.log('application is listening on  port 8000');
 });
 
 // phantom task here we are rendering a page using phantom js browser. url has
 // been set by BOT;
 function renderHtmlPhantom(req, res, next) {
-    var url = 'http://localhost:8000' + urlencode.decode(req.url, 'gbk');
+    var url = 'http://localhost:3000' + urlencode.decode(req.url, 'gbk');
     console.log('-----BOT REQUEST URL----', url);
 
     var agent = req.useragent.source;

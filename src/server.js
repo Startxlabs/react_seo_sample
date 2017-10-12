@@ -87,7 +87,7 @@ app.listen(3000, function () {
 
 
 function renderHtmlPhantom(req, res, next) {
-    var url = 'http://localhost:8000' + urlencode.decode(req.url, 'gbk');
+    var url = 'http://localhost:3000' + urlencode.decode(req.url, 'gbk');
     console.log('-----BOT REQUEST URL----', url);
     console.log('url:' , url)
     console.log('req.url' , req.url)
@@ -118,12 +118,12 @@ function phantomInstance(url, callback) {
     ]
     childProcess.execFile(binPath, childArgs, {
         maxBuffer: 500 * 1024
-    }, function (err, stdout, stderr) {
+    }/*, function (err, stdout, stderr) {
         if (err) {
             return callback(err);
         }
         return callback(null, stdout);
-    })
+    }*/)
 }
 
 

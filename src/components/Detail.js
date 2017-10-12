@@ -77,7 +77,7 @@ export default class NewsDetail extends Component {
 
         		<h1>This is Detail Page</h1>
         		{lstData}
-        		<h3><Link to="/home">Back Page</Link></h3>
+        		<h3><Link to="/">Back Page</Link></h3>
             </div>
         	);
     }
