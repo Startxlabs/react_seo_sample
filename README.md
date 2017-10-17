@@ -15,7 +15,7 @@ staics:
 
 1. css : contains css file
 2. js  : contains bundles.js file
-3. index-static.html : html file contain main div where all jsx data render
+3. index.html : html file contain main div where all jsx data render
 
 views:
 
@@ -23,5 +23,5 @@ views:
 
 app-client.js : react render component
 routes.js : routing com[ponent
-server.js : express and phantom server
+index.js : express and phantom server
 
