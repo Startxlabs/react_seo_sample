@@ -1,6 +1,7 @@
 To Run This Sample App run Following Commands :
 1. npm install
 2. npm run start
+3. npm run build
 
 components:
 

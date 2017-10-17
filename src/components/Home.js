@@ -36,18 +36,19 @@ export default class Home extends Component {
 
 	    	return(
           <div>
-            <Helmet>
-              <title>{i.title}</title>
-              <meta name="description" content={i.title} />
-            </Helmet>
-
-	    			<li><Link to={"/detail/"+id} key={id} id={id}>{title}</Link></li>
+	    			<p><Link to={"/detail/"+id}  id={id}>{title}</Link></p>
           </div>
 	    	);
     	},this)
 
         return (
         	<div>
+          <Helmet>
+          <title>React SEO App - Example</title>
+          <meta name="description" content= "This is a Test App for react SEO"/>
+          <meta itemprop="name" content="React SEO App." />
+          <meta itemprop="description" content="This is a Test App for react SEO" />
+          </Helmet>
         		<h3>News list</h3>
         		{lstData}
           </div>

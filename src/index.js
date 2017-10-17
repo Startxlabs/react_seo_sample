@@ -10,7 +10,7 @@ var app = express();
 
 app.use(useragent.express());
 
-app.use(function (req, res, next) {
+app.use('/*',function (req, res, next) {
     var agent = req.useragent.source;
     console.log(agent);
 
@@ -18,18 +18,20 @@ app.use(function (req, res, next) {
 
     if ((lodash.includes(agent, 'Google') || lodash.includes(agent, 'facebookexternalhit') || lodash.includes(agent, 'Facebot')) && req.useragent.isPhantomJS == false) {
         //sent request to render via phantom
+        console.log('Bot')
         return renderHtmlPhantom(req, res, next);
     } else {
-        //sent request to render at cient borwser
+        console.log('Browser Request')
+        //sent request to render at cient browser
         return next();
     }
 });
 
 //serving static folder
-app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/', express.static(path.join(__dirname, 'static')));
 
 app.listen(3000, function () {
-    console.log('application is listening on  port 8000');
+    console.log('application is listening on  port 3000');
 });
 
 // phantom task here we are rendering a page using phantom js browser. url has
