@@ -1,9 +1,9 @@
 {
-  "name": "judo-heroes",
+  "name": "React SEO Sample",
   "version": "1.0.0",
-  "description": "Simple application to showcase how to achieve universal rendering and routing with React and Express.",
+  "description": "React SEO Sample",
   "main": "src/server.js",
-  "repository": "git@github.com:lmammino/judo-heroes.git",
+  "repository": "",
   "scripts": {
     "start": "node src/index.js",
     "start-dev": "npm run start-dev-hmr",
