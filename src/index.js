@@ -10,25 +10,35 @@ var app = express();
 
 app.use(useragent.express());
 
-app.use('/*',function (req, res, next) {
+//serving static folder
+app.use('/css', express.static(path.join(__dirname, 'static/css')));
+app.use('/js', express.static(path.join(__dirname, 'static/js')));
+
+
+app.use('/*', function (req, res, next) {
     var agent = req.useragent.source;
     console.log(agent);
 
     //checking bot here. If it is a bot then render via phantom
 
-    if ((lodash.includes(agent, 'Google') || lodash.includes(agent, 'facebookexternalhit') || lodash.includes(agent, 'Facebot')) && req.useragent.isPhantomJS == false) {
+    if ((lodash.includes(agent, 'Google') || lodash.includes(agent, 'facebookexternalhit') || lodash.includes(agent, 'Facebot')) && req.useragent.isPhantomJS === false) {
         //sent request to render via phantom
-        console.log('Bot')
+        console.log('Bot');
         return renderHtmlPhantom(req, res, next);
     } else {
-        console.log('Browser Request')
+        console.log('Browser Request');
         //sent request to render at cient browser
         return next();
     }
 });
 
-//serving static folder
-app.use('/', express.static(path.join(__dirname, 'static')));
+
+//default serving index.html file
+app.use('/', function (req, res, next) {
+    res.sendFile(path.join(__dirname, '/static/index.html'));
+});
+
+
 
 app.listen(3000, function () {
     console.log('application is listening on  port 3000');
@@ -49,12 +59,14 @@ function renderHtmlPhantom(req, res, next) {
                 .status(404)
                 .send('Internal server error');
         } else {
-            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.writeHead(200, {
+                'Content-Type': 'text/html'
+            });
             res.write(result);
             res.end();
         }
     });
-};
+}
 
 // creating a phantom instance using phantom script file. more information can
 // be found on phantomjs official page
@@ -73,5 +85,5 @@ function phantomInstance(url, callback) {
             return callback(err);
         }
         return callback(null, stdout);
-    })
+    });
 }
