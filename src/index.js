@@ -20,14 +20,14 @@ app.get('/*', function (req, res, next) {
     console.log(agent);
 
     //checking bot here. If it is a bot then render via phantom
-    if (lodash.includes(agent, 'Mozilla') || lodash.includes(agent, 'AppleWebKit') || lodash.includes(agent, 'Chrome') || lodash.includes(agent, 'Safari')) {
+      if ((lodash.includes(agent, 'googlefeedfetcher')||(lodash.includes(agent, 'Soso')||(lodash.includes(agent, 'Baidu')||(lodash.includes(agent, 'Yandex')||(lodash.includes(agent, 'yandexbot')||(lodash.includes(agent, 'msnbot')||(lodash.includes(agent, 'bingbot')||(lodash.includes(agent, 'googleplusshare')||(lodash.includes(agent, 'exabot')||(lodash.includes(agent, 'Bing')||(lodash.includes(agent, 'Google') || lodash.includes(agent, 'facebookexternalhit') || lodash.includes(agent, 'Facebot')) && req.useragent.isPhantomJS === false) {
+        //sent request to render via phantom
+        console.log('Bot');
+        return renderHtmlPhantom(req, res, next);
+    } else {
         console.log('Browser Request');
         //sent request to render at cient browser
         return next();
-    }
-    else{
-        console.log('Bot');
-        return renderHtmlPhantom(req, res, next);
     }
 });
 
